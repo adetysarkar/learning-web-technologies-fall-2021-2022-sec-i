@@ -1,50 +1,45 @@
-function editUser($data){
-        $con = getConnection();
-        $sql = "update users set username='{$data['username']}', password='{$data['password']}' , email='{$data['email']}' where id={$data['idd']}";
-        if(mysqli_query($con, $sql)){
-            return true;
-            header('location: userlist.php');
-        }else{
-            return false;
-        }
-    }
-<?php
-include('../model/db.php');
-require_once('../model/usersModel.php');
-$id=$_GET['id'];
-$status = getUserById($id);
+<?php 
+	
+	require_once('../model/usersModel.php');
 
-if(isset($_POST['submit'])){
-
-    $data = array(
-        'idd'=>$_POST["id"],
-        'username'=>$_POST["username"],
-        'password'=>$_POST["password"],
-        'email'=>$_POST["email"]
-    );
-    editUser($data);
-}
-
-
+	$id = $_REQUEST['id'];
+	//echo $id;
+	$user = getUserById($id);
+	//print_r($user);
 ?>
 
-<!DOCTYPE html>
 <html>
-
 <head>
-    <title>Edit User</title>
+	<title>Edit user</title>
 </head>
-
 <body>
-    <h2>Edit</h2>
-    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data" >
-        <label>Username:</label><input type="text" value="<?php echo $status['username']; ?>" name="username">
-        <label>Password:</label><input type="text" value="<?php echo $status['password']; ?>" name="password">
-        <label>Email: </label><input type="email" value="<?php echo $status['email']; ?>" name="email">
-        <input type="hidden" name="id" id="" value="<?php echo $_GET['id']; ?> ">
-        <input type="submit" name="submit">
-        <a href="../views/userlist.php">Back</a>
-    </form>
+	<center>
+		<a href="home.php">Back </a> |
+		<a href="../controller/logout.php">logout </a>
+	</center>
+	
+	<form method="post" action="../controller/updateUser.php">
+		<fieldset>
+			<legend>Edit User</legend>
+			<table>
+				<tr>
+					<td>Username:</td>
+					<td><input type="text" name="username" value="<?=$user['username']?>"></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="password" value="<?=$user['password']?>"></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="email" name="email" value="<?=$user['email']?>"></td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="id" value="<?=$user['id']?>"></td>
+					<td><input type="submit" name="submit" value="update"></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
 </body>
-
 </html>
