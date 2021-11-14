@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta email="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+    <script>
+        function ValidateEmailAddress(emailString) {
+            
+            var atSymbol = emailString.indexOf("@");
+            if (atSymbol < 1) return false;
+
+            var dot = emailString.indexOf(".");
+            if (dot <= atSymbol + 2) return false;
+
+            
+            if (dot === emailString.length - 1) return false;
+
+            return true;
+        }
+
+        function CheckEmail(emailString) {
+            
+            var Result = ValidateEmailAddress(emailString);
+
+            if (Result) {
+                document.getElementById("output").innerHTML = "<strong style='color:green;'><br>Valid Email ID!!</strong>";
+            } else {
+                document.getElementById("output").innerHTML = "<span style='color:red;'>NOT a Valid Email ID..</span>";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <fieldset>
+            <legend><label>EMAIL</label></legend>
+            <input type="text" id="email" name="email" value="" placeholder="Please enter you Email"><span id="output"></span>
+            <hr>
+            <div style=margin-top:30px;>
+                <input type="submit" value="Submit" onClick="CheckEmail(document.getElementById('email').value)">
+            </div>
+        </fieldset>
+    </div>
+</body>
+
+</html>

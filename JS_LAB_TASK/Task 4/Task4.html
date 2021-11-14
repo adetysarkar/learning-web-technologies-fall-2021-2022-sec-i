@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta email="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+</head>
+
+<body>
+
+    <div>
+        <fieldset>
+            <legend><label>Date of Birth</label></legend>
+
+            <input type="text" id="day" name="day" value="" placeholder="dd" size="3"> -
+            <input type="text" id="month" name="month" value="" placeholder="mm" size="3"> -
+            <input type="text" id="year" name="year" value="" placeholder="yy" size="5">
+            <span id="error">
+            </span>
+            <span id="dob">
+            </span>
+
+            <hr>
+
+            <div style=margin-top:30px;>
+                <input type="submit" value="Submit" onclick="validateDOB()">
+            </div>
+        </fieldset>
+    </div>
+
+
+ 
+    <script>
+        function validateDOB() {
+            var dobday = document.getElementById('day').value;
+            var dobmonth = document.getElementById('month').value;
+            var dobyear = document.getElementById('year').value;
+            var Error = document.getElementById('error');
+
+            if ((dobday == "") || (dobmonth == "") || (dobyear == "")) {
+                Error.innerHTML = "<span style='color: red'><br>Enter all the fields</span>";
+            } else {
+                if ((dobday >= 1 && dobday <= 31) && (dobmonth >= 1 && dobmonth <= 12) && (dobyear >= 1900 && dobyear <= 2016)) {
+                    Error.innerHTML = "";
+                    document.getElementById('dob').innerHTML = "<strong style='color: green'><br>Valid dob!!</strong>";
+                } else {
+                    Error.innerHTML = "<span style='color:red'><br>Invalid Date Entered [dd - (1-31) mm - (1-12) yy - (1900-2016)]</span>";
+                    document.getElementById('dob').innerHTML = "";
+                }
+            }
+        }
+
+        String.prototype.stripSlashes = function() {
+            return this.replace(/\\(.)/mg, "$1");
+        }
+
+        function escapeHtml(text) {
+            var map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+
+            return text.replace(/[&<>"']/g, function(m) {
+                return map[m];
+            });
+        }
+
+        function validateInput(information) {
+            var information = information.trim();
+            var information = information.stripSlashes();
+            var information = escapeHtml(information);
+            return information;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+
+<body>
+
+
+    <div>
+        <fieldset>
+            <legend>
+                <label>NAME</label>
+            </legend>
+
+            <input type="text" id="name" name="name" value="" placeholder="Name" size="30">
+            <h4 id="error"></h4>
+            <hr>
+
+            <div style=margin-top:30px;>
+                <input type="submit" value="Submit" onclick="validateName()">
+            </div>
+        </fieldset>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function WordCount(str) {
+            return str.split(' ')
+                .filter(function(n) {
+                    return n != ''
+                })
+                .length;
+        }
+
+        function validateName() {
+            let nameValue = document.getElementById('name').value;
+            var Error = document.getElementById('error');
+            var str_word_count = WordCount(nameValue);
+            if (nameValue == "") {
+                Error.innerHTML = "<span style='color: red'>Name is required</span>";
+            } else {
+                let Name = validateInput(nameValue);
+                if (!Name.match(/^[a-zA-Z-'._ ]*$/)) {
+                    Error.innerHTML = "<span style='color: red'>Name Must Start with a letter</span>";
+                } else {
+                    Name = validateInput(nameValue);
+                    if (str_word_count < 2) {
+                        Error.innerHTML = "<span style='color: red'>Minimum Two Words Needed</span>";
+                    } else {
+                        Error.innerHTML = "<span style='color: green'>Done!!!</span>";
+
+                    }
+                }
+            }
+        }
+
+        String.prototype.stripSlashes = function() {
+            return this.replace(/\\(.)/mg, "$1");
+        }
+
+        function escapeHtml(text) {
+            var map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+
+            return text.replace(/[&<>"']/g, function(m) {
+                return map[m];
+            });
+        }
+
+        function validateInput(information) {
+            var information = information.trim();
+            var information = information.stripSlashes();
+            var information = escapeHtml(information);
+            return information;
+        }
+    </script>
+</body>
+
+</html>

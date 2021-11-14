@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+</head>
+<body>
+    <div>
+        <fieldset>
+            <legend><label>Degree</label></legend>
+
+
+
+            <input for="ssc" type="checkbox" id="ssc" name="degree[]" value="SSC"> SSC
+            <input for="hsc" type="checkbox" id="hsc" name="degree[]" value="HSC"> HSC
+            <input for="bsc" type="checkbox" id="bsc" name="degree[]" value="BSc"> BSc
+            <input for="msc" type="checkbox" id="msc" name="degree[]" value="MSc"> MSc
+            <span id="error"></span>
+            <span id="myDegree"></span>
+            <div style=margin-top:30px;>
+                <input type="submit" value="Submit" onclick="checkDegree()">
+            </div>
+        </fieldset>
+    </div>
+
+
+
+    <script>
+        function checkDegree() {
+            var SSC = document.getElementById('ssc');
+            var HSC = document.getElementById('hsc');
+            var BSC = document.getElementById('bsc');
+            var MSC = document.getElementById('msc');
+            if (SSC.checked == true || HSC.checked == true || BSC.checked == true || MSC.checked == true) {
+                document.getElementById('myDegree').innerHTML = "<strong style='color: green'><br> Done!!! </strong>";
+                document.getElementById('error').innerHTML = "";
+            } else {
+                document.getElementById('error').innerHTML = "<strong style='color: red'><br>No degree is selected</strong>";
+            }
+        }
+    </script>
+
+    
+</body>
+</html>
