@@ -32,12 +32,12 @@ $count = mysqli_num_rows($result);
         <?php while ($data = mysqli_fetch_assoc($result)) { ?>
             <tr>
 
-                <td><?= $data['product_name'] ?></td>
-                <td><?= ((int)$data['product_selling_price'] - (int)$data['product_buying_price']); ?></td>
+                <td><?= $data['name'] ?></td>
+                <td><?= ((int)$data['sellingPrice'] - (int)$data['buyingPrice']); ?></td>
 
                 <td>
-                    <a href="edit.php?id=<?php echo $data['ID']; ?>"> EDIT </a> |
-                    <a href="delete.php?id=<?php echo $data['ID']; ?>"> DELETE</a>
+                    <a href="edit.php?ID=<?php echo $data['ID']; ?>"> EDIT </a> |
+                    <a href="delete.php?ID=<?php echo $data['ID']; ?>"> DELETE</a>
                 </td>
             </tr>
 

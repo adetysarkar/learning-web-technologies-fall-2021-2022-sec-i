@@ -2,10 +2,10 @@
 
 require_once('db.php');
 
-function addProduct($product)
+function addProduct($products)
 {
     $con = getConnection();
-    $sql = "insert into products values('', '{$product['product_name']}', '{$product['product_buying_price']}', '{$product['product_selling_price']}')";
+    $sql = "insert into products values('', '{$products['name']}', '{$products['buyingPrice']}', '{$products['sellingPrice']}')";
 
     if (mysqli_query($con, $sql)) {
         return true;
@@ -31,10 +31,10 @@ function getProductById($ID)
     return $data;
 }
 
-function editProduct($product)
+function editProduct($products)
 {
     $con = getConnection();
-    $sql = "update products set product_name='{$product['product_name']}', product_buying_price='{$product['product_buying_price']}', product_selling_price='{$product['product_selling_price']}' where id={$product['ID']}";
+    $sql = "update products set name='{$products['name']}', buyingPrice='{$products['buyingPrice']}', sellingPrice='{$products['sellingPrice']}' where ID={$products['ID']}";
 
     if (mysqli_query($con, $sql)) {
         return true;

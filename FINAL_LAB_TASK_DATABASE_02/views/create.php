@@ -2,16 +2,16 @@
 require_once('../model/productsModel.php');
 if (isset($_POST['submit'])) {
 
-	$product_name = $_POST['product_name'];
-	$product_buying_price = $_POST['product_buying_price'];
-	$product_selling_price = $_POST['product_selling_price'];
+	$name = $_POST['name'];
+	$buyingPrice = $_POST['buyingPrice'];
+	$sellingPrice = $_POST['sellingPrice'];
 
-	if ($product_name != "") {
-		if ($product_buying_price != "") {
-			if ($product_selling_price != "") {
+	if ($name != "") {
+		if ($buyingPrice != "") {
+			if ($sellingPrice != "") {
 
-				$product = ['product_name' => $product_name, 'product_buying_price' => $product_buying_price, 'product_selling_price' => $product_selling_price];
-				$status = addProduct($product);
+				$products = ['name' => $name, 'buyingPrice' => $$buyingPrice, 'sellingPrice' => $sellingPrice];
+				$status = addProduct($products);
 				if ($status) {
 					header('location: ../views/productList.php');
 				}
@@ -63,15 +63,15 @@ if (isset($_POST['submit'])) {
 			<table>
 				<tr>
 					<td>Name:</td>
-					<td><input type="text" name="product_name" value=""></td>
+					<td><input type="text" name="name" value=""></td>
 				</tr>
 				<tr>
 					<td>Buying Price:</td>
-					<td><input type="text" name="product_buying_price" value=""></td>
+					<td><input type="text" name="buyingPrice" value=""></td>
 				</tr>
 				<tr>
 					<td>Selling Price:</td>
-					<td><input type="text" name="product_selling_price" value=""></td>
+					<td><input type="text" name="sellingPrice" value=""></td>
 				</tr>
 				<tr>
 					<td></td>

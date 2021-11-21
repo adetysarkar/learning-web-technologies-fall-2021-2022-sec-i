@@ -2,16 +2,16 @@
 
 require_once('../model/productsModel.php');
 
-$product_name = $_REQUEST['product_name'];
-$product_buying_price = $_REQUEST['product_buying_price'];
-$product_selling_price = $_REQUEST['product_selling_price'];
-$id = $_REQUEST['id'];
+$name = $_REQUEST['name'];
+$buyingPrice = $_REQUEST['buyingPrice'];
+$sellingPrice = $_REQUEST['sellingPrice'];
+$ID = $_REQUEST['ID'];
 
-$products = ['id' => $id, 'product_name' => $product_name, 'product_buying_price' => $product_buying_price, 'product_selling_price' => $product_selling_price];
+$products = ['ID' => $ID, 'name' => $name, 'buyingPrice' => $buyingPrice, 'sellingPrice' => $sellingPrice];
 $status = editProduct($products);
 
 if ($status) {
     header('location: ../views/productList.php');
 } else {
-    header('location: ../views/edit.php?id={$id}');
+    header('location: ../views/edit.php?ID={$ID}');
 }

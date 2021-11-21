@@ -3,6 +3,6 @@
 
 require_once('../model/productsModel.php');
 
-if (deleteProduct($_GET['id'])) {
+if (deleteProduct($_GET['ID'])) {
     header('location: productList.php');
 }
