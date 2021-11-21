@@ -6,30 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
 
-   <!-- <link rel="stylesheet" href="style.css"> -->
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="container">
         <div id="calculator">
           <header class="top-part">
             <div class="top">
-              
+              <h5 class="branding"></h5>
+              <div class="window">
+                
                 <div class="close button" role="button">
                   <img class="icon icons8-Multiply" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABBUlEQVRYR+2W6w3CMAyErxuwCYwAG7AJjAATMQKMUDZhBHQSQaFqYp8DqpDSn2nj+3J+NAMWfoaF9dEBugN/4cAewA3AQ+yYFYADgHNtn+UAxS8ARgA7AYLiVwCbF8CpBGEBMBBPvxYgcvE7gG0N3AIguAIhiTO4B8ALIYsrABZESFwFKEFwPRWcmfNpMXpTkO+b1gTfsdpl8YgDCSSH4FpIvBUg2c446px4OxpNQZ5zBlPmxEcZqABz1c6A6rAKOVBrNWVYhRzw9HkIwpMCj/hcd7gK0wJQxEMQFkD6Hat9nqeD94Hw75inarmQHGviLYNIvByVP7dS8DWh6I2oA3QHfu7AEzfHWCF+OOmJAAAAAElFTkSuQmCC">
                 </div>
               </div>
             </div>
             
+            <div class="screen">
+              <div class="history-screen">
+                <input id="history" name="history" type="text" value="" disabled>
+              </div>
               <div class="main-screen">
                 <input id="main" name="main" value="" type="text" disabled>
               </div>
             </div>
             
-            </div>
           </header>
           <section class="bottom-part">
             <div class="features">
               
+              </div>
               <div class="main-menu">
                 <div class="row">
                   <div id="clear-entry" class="button sign" data-value="CE" role="button">CE</div>
@@ -69,7 +75,7 @@
         </div>
       </main>
 
-      <!-- <script src="calculator.js"></script> -->
+      <script src="calculator.js"></script>
       
       
 </body>
