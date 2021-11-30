@@ -35,10 +35,6 @@ if(isset($_POST)){
             if($out<>'' and $num === '%' and !in_array($last, $operators)){
                 $out= eval("return ($old)/100;");
             }
-            
-            if($out<>'' and $num === 'x2' and !in_array($last, $operators)){
-                $out= eval("return ($old*$old);");
-            }
         break;
         default: $out = $old;
     }
